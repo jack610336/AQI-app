@@ -202,9 +202,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String value = TownjsonObject.getString("AQI");
                 String locationName = TownjsonObject.getString("SiteName");
                 String dataTime = TownjsonObject.getString("PublishTime");
+                String cityPics = TownjsonObject.getString("County");
 
-//                mWeatherDao.deleteAll();
-                doInsertOrEdit(Long.valueOf(j),cityid,locationName,value,dataTime);
+                doInsertOrEdit(Long.valueOf(j),cityid,locationName,value,dataTime,cityPics);
 
             }
 
@@ -215,24 +215,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     // 控制新增或修改
 
-    private void doInsertOrEdit(Long Id,String cityid,String cityname,String cityvalue,String date){
+    private void doInsertOrEdit(Long Id,String cityid,String cityname,String cityvalue,String date,String cityPics){
         weatherEntry entry = new weatherEntry();
         entry.setId(Id);
         entry.setCityId(cityid);
         entry.setCityName(cityname);
         entry.setCityValue(cityvalue);
         entry.setDate(date);
+        entry.setCityPics(cityPics);
         mWeatherDao.insertOrReplace(entry);
 
-
-        mWeatherEntryList.add(entry);
+//        mWeatherEntryList.add(entry);
 
 //        mWeatherEntryList = mWeatherDao.loadAll();
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                adpter.setList(mWeatherEntryList);
-            }});
+//        runOnUiThread(new Runnable() {
+//            @Override
+//            public void run() {
+//                adpter.setList(mWeatherEntryList);
+//            }});
 
 
 

@@ -16,26 +16,33 @@
             android:id="@+id/txtcityName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:text="@string/cityName"
-            android:layout_gravity="bottom"
-            android:textSize="20dp"/>
+            android:textAlignment="center"
+            android:textColor="#FFFAFA"
+            android:textSize="20dp" />
         <TextView
             android:id="@+id/empty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text=""
-            android:layout_gravity="bottom"/>
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            android:textColor="#FFFAFA"/>
 
         <TextView
             android:id="@+id/txtcityValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="1"
             android:text="@string/unit"
-            android:layout_gravity="bottom"
-            android:textSize="20dp"/>
+            android:textAlignment="center"
+            android:textColor="#FFFAFA"
+            android:textSize="20dp" />
 
     </LinearLayout>
 </android.support.v7.widget.CardView>

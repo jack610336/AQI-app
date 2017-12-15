@@ -24,8 +24,6 @@ import java.util.List;
 public class MyRecyclerAdpter extends RecyclerView.Adapter<MyRecyclerAdpter.ViewHolder> {
 
 
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-
     private List<weatherEntry> mweatherEntryList;
     public RecyclerViewItemClick mrecyclerViewItemClick;
 
@@ -48,19 +46,18 @@ public class MyRecyclerAdpter extends RecyclerView.Adapter<MyRecyclerAdpter.View
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        int aqi=1;
-        int currentAQI=Integer.parseInt(mweatherEntryList.get(position).getCityValue());
 
+        int currentAQI=Integer.parseInt(mweatherEntryList.get(position).getCityValue());
         holder.itemView.setTag(position);
 
         holder.txtcityName.setText(mweatherEntryList.get(position).getCityName());
-        holder.emptytxt.setText(mweatherEntryList.get(position).getDate());
+//        holder.emptytxt.setText(mweatherEntryList.get(position).getDate());
         holder.txtTemp.setText("AQI : "+mweatherEntryList.get(position).getCityValue());
 
         if( currentAQI >=0 &&  currentAQI <= 50){
             holder.backgroundPics.setBackgroundColor(Color.parseColor("#00DB00"));
         }else if(currentAQI >50 && currentAQI <=100){
-            holder.backgroundPics.setBackgroundColor(Color.parseColor("#EAC100"));
+            holder.backgroundPics.setBackgroundColor(Color.parseColor("#FFCC00"));
         }else if(currentAQI > 100 && currentAQI <=150){
             holder.backgroundPics.setBackgroundColor(Color.parseColor("#FF8000"));
         }
