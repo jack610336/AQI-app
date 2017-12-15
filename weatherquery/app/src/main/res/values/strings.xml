@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">AQI</string>
+    <string name="unit">°C</string>
+    <string name="cityName">北投區</string>
+
+    <string name="good"> 良好</string>
+    <string name="normal"> 普通</string>
+    <string name="notgood1"> 小心</string>
+    <string name="nothealth"> 不健康</string>
+    <string name="nogood"> 非常不健康</string>
+    <string name="dangerous"> 危害</string>
+    <string name="error"> 資料有誤</string>
+
+</resources>
