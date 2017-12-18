@@ -15,7 +15,6 @@ import com.practice.jack_wang.weatherquery.adapter.MyRecyclerAdpter;
 import com.practice.jack_wang.weatherquery.sqlite.weatherEntry;
 import com.practice.jack_wang.weatherquery.sqlite.weatherEntryDao;
 
-import org.greenrobot.greendao.query.QueryBuilder;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -65,29 +64,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onRefresh() {
 
-                    refreshAQI();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(2000);
+                        }catch (InterruptedException e ){
+                            e.printStackTrace();
+                        }
+
+                    }
+                }).start();
+                swipeRefreshLayout.setRefreshing(false);
+                searchWeatherAPIs();
+                queryDBdata();
 
             }
         });
-    }
-
-    private void refreshAQI() {
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(2000);
-                    swipeRefreshLayout.setRefreshing(false);
-                }catch (InterruptedException e ){
-                    e.printStackTrace();
-                }
-
-            }
-        }).start();
-        searchWeatherAPIs();
-        queryDBdata();
-
     }
 
     private void findViews(){
@@ -226,7 +219,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mWeatherDao.insertOrReplace(entry);
 
 //        mWeatherEntryList.add(entry);
-
 //        mWeatherEntryList = mWeatherDao.loadAll();
 //        runOnUiThread(new Runnable() {
 //            @Override

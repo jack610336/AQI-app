@@ -8,13 +8,10 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.practice.jack_wang.weatherquery.MainActivity;
 import com.practice.jack_wang.weatherquery.R;
 import com.practice.jack_wang.weatherquery.sqlite.weatherEntry;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 import java.util.List;
 
 /**
@@ -25,6 +22,7 @@ public class MyRecyclerAdpter extends RecyclerView.Adapter<MyRecyclerAdpter.View
 
 
     private List<weatherEntry> mweatherEntryList;
+
     public RecyclerViewItemClick mrecyclerViewItemClick;
 
     public interface RecyclerViewItemClick{
@@ -53,6 +51,7 @@ public class MyRecyclerAdpter extends RecyclerView.Adapter<MyRecyclerAdpter.View
         holder.txtcityName.setText(mweatherEntryList.get(position).getCityName());
 //        holder.emptytxt.setText(mweatherEntryList.get(position).getDate());
         holder.txtTemp.setText("AQI : "+mweatherEntryList.get(position).getCityValue());
+
 
         if( currentAQI >=0 &&  currentAQI <= 50){
             holder.backgroundPics.setBackgroundColor(Color.parseColor("#00DB00"));
