@@ -45,13 +45,19 @@ public class MyRecyclerAdpter extends RecyclerView.Adapter<MyRecyclerAdpter.View
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
+
+
         int currentAQI=Integer.parseInt(mweatherEntryList.get(position).getCityValue());
         holder.itemView.setTag(position);
 
         holder.txtcityName.setText(mweatherEntryList.get(position).getCityName());
 //        holder.emptytxt.setText(mweatherEntryList.get(position).getDate());
-        holder.txtTemp.setText("AQI : "+mweatherEntryList.get(position).getCityValue());
 
+        if(currentAQI ==-1) {
+            holder.txtTemp.setText("AQI : 暫無資料");
+        }else {
+            holder.txtTemp.setText("AQI : " + mweatherEntryList.get(position).getCityValue());
+        }
 
         if( currentAQI >=0 &&  currentAQI <= 50){
             holder.backgroundPics.setBackgroundColor(Color.parseColor("#00DB00"));
@@ -70,7 +76,7 @@ public class MyRecyclerAdpter extends RecyclerView.Adapter<MyRecyclerAdpter.View
             holder.backgroundPics.setBackgroundColor(Color.parseColor("#AE0000"));
         }
         else {
-            holder.backgroundPics.setBackgroundColor(Color.parseColor("#FDFFFF")); //例外狀況
+            holder.backgroundPics.setBackgroundColor(Color.parseColor("#444444")); //例外狀況
         }
 
 

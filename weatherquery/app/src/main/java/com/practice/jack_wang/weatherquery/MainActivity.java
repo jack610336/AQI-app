@@ -197,6 +197,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String dataTime = TownjsonObject.getString("PublishTime");
                 String cityPics = TownjsonObject.getString("County");
 
+
+
+                if(value.length() ==0){
+                    value = "-1";
+                }
                 doInsertOrEdit(Long.valueOf(j),cityid,locationName,value,dataTime,cityPics);
 
             }
