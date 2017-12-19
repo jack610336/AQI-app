@@ -59,6 +59,8 @@ public class MyRecyclerAdpter extends RecyclerView.Adapter<MyRecyclerAdpter.View
             holder.txtTemp.setText("AQI : " + mweatherEntryList.get(position).getCityValue());
         }
 
+
+        //  判斷空氣汙染顏色
         if( currentAQI >=0 &&  currentAQI <= 50){
             holder.backgroundPics.setBackgroundColor(Color.parseColor("#00DB00"));
         }else if(currentAQI >50 && currentAQI <=100){

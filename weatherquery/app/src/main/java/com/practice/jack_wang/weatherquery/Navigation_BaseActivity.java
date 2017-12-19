@@ -8,10 +8,10 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 import com.practice.jack_wang.weatherquery.DBtools.DBtools;
 import com.practice.jack_wang.weatherquery.sqlite.weatherEntry;
@@ -27,10 +27,11 @@ import java.util.List;
 public class Navigation_BaseActivity extends AppCompatActivity {
     private DrawerLayout DL;
     private FrameLayout FL;
+    private LinearLayout background;
     protected NavigationView NV;
     protected Toolbar toolbar;
     protected int CurrentMenuItem = 0;//紀錄目前User位於哪一個項目
-    int citycode =3;
+    int citycode =0;
 
     weatherEntryDao mWeatherDao;
     private List<weatherEntry> mWeatherEntryList = new ArrayList<>();

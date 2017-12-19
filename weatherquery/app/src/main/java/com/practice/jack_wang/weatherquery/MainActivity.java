@@ -39,11 +39,7 @@ public class MainActivity extends Navigation_BaseActivity implements View.OnClic
     private List<weatherEntry> mWeatherEntryList = new ArrayList<>();
     private weatherEntryDao mWeatherDao;
 
-
-    /////
-
-
-    private int[] TollBarTitle = {R.string.unit,R.string.app_name,R.string.cityName};
+    private int[] TollBarTitle = {R.string.app_name};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +48,7 @@ public class MainActivity extends Navigation_BaseActivity implements View.OnClic
         findViews();
 
 
-        toolbar.setTitle(TollBarTitle[1]);//設置ToolBar Title
+        toolbar.setTitle(TollBarTitle[0]);//設置ToolBar Title
         setUpToolBar();//使用父類別的setUpToolBar()，設置ToolBar
         CurrentMenuItem = 0;//目前Navigation項目位置
         NV.getMenu().getItem(CurrentMenuItem).setChecked(true);//設置Navigation目前項目被選取狀態
@@ -250,6 +246,6 @@ public class MainActivity extends Navigation_BaseActivity implements View.OnClic
     @Override
     public void onClick(View view) {
 
-        //點選到畫面上  所有元件  可以偵測所有元件發生事件 再用switch做事
+        //點選到畫面上  所有元件  可以偵測所有元件發生事件
     }
 }
