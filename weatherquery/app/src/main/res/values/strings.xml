@@ -11,4 +11,38 @@
     <string name="dangerous" translatable="false"> 危害</string>
     <string name="error" translatable="false"> 資料有誤</string>
 
+
+    <string name="open_navigation">Open Navigation</string>
+    <string name="close_navigation">Close Navigation</string>
+
+
+    <string name="tAll">全台資料</string>
+    <string name="tKeelung">基隆市</string>
+    <string name="tNewTaipei">新北市</string>
+    <string name="tTaipei">臺北市</string>
+    <string name="tTaoyuan">桃園市</string>
+    <string name="tHsinchuB">新竹縣</string>
+    <string name="tHsinchu">新竹市</string>
+    <string name="tMiaoliB">苗栗縣</string>
+    <string name="tTaichung">臺中市</string>
+    <string name="tChanghuaB">彰化縣</string>
+    <string name="tNantouB">南投縣</string>
+    <string name="tYunlinB">雲林縣</string>
+    <string name="tKaohsiung">高雄市</string>
+    <string name="tPingtungB">屏東縣</string>
+    <string name="tHualienB">花蓮縣</string>
+    <string name="tYilan">宜蘭縣</string>
+    <string name="tChiayiB">嘉義縣</string>
+    <string name="tChiayi">嘉義市</string>
+    <string name="tTainan">台南市</string>
+    <string name="tTaitung">臺東縣</string>
+    <string name="tPenghuB">澎湖縣</string>
+    <string name="tLienchiangB">連江縣</string>
+    <string name="tKinmen">金門縣</string>
+
+    <string name="thint">下拉已完成更新</string>
+
+
+
+
 </resources>

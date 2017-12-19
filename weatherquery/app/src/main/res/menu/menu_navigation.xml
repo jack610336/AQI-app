@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/tAll"
+
+            android:title="@string/tAll" />
+        <item
+            android:id="@+id/tKeelung"
+
+            android:title="@string/tKeelung" />
+        <item
+            android:id="@+id/tNewTaipei"
+
+            android:title="@string/tNewTaipei"/>
+        <item
+            android:id="@+id/tTaipei"
+
+            android:title="@string/tTaipei"/>
+        <item
+            android:id="@+id/tTaoyuan"
+            android:title="@string/tTaoyuan" />
+        <item
+            android:id="@+id/tHsinchuB"
+            android:title="@string/tHsinchuB"/>
+        <item
+            android:id="@+id/tHsinchu"
+            android:title="@string/tHsinchu"/>
+        <item
+            android:id="@+id/tMiaoliB"
+            android:title="@string/tMiaoliB" />
+        <item
+            android:id="@+id/tTaichung"
+            android:title="@string/tTaichung"/>
+        <item
+            android:id="@+id/tChanghuaB"
+            android:title="@string/tChanghuaB"/>
+        <item
+            android:id="@+id/tNantouB"
+            android:title="@string/tNantouB" />
+        <item
+            android:id="@+id/tYunlinB"
+            android:title="@string/tYunlinB"/>
+        <item
+            android:id="@+id/tChiayiB"
+            android:title="@string/tChiayiB" />
+        <item
+            android:id="@+id/tChiayi"
+            android:title="@string/tChiayi"/>
+        <item
+            android:id="@+id/tTainan"
+            android:title="@string/tTainan"/>
+        <item
+            android:id="@+id/tKaohsiung"
+            android:title="@string/tKaohsiung"/>
+        <item
+            android:id="@+id/tPingtungB"
+            android:title="@string/tPingtungB" />
+        <item
+            android:id="@+id/tYilan"
+            android:title="@string/tYilan"/>
+        <item
+            android:id="@+id/tHualienB"
+            android:title="@string/tHualienB"/>
+        <item
+            android:id="@+id/tTaitung"
+            android:title="@string/tTaitung"/>
+        <item
+            android:id="@+id/tLienchiangB"
+            android:title="@string/tLienchiangB"/>
+        <item
+            android:id="@+id/tKinmen"
+            android:title="@string/tKinmen"/>
+        <item
+            android:id="@+id/tPenghuB"
+            android:title="@string/tPenghuB" />
+    </group>
+</menu>

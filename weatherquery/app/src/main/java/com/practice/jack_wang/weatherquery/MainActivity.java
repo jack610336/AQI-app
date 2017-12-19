@@ -3,7 +3,6 @@ package com.practice.jack_wang.weatherquery;
 import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -29,22 +28,34 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends Navigation_BaseActivity implements View.OnClickListener {
 
 
     OkHttpClient client = new OkHttpClient();
 
     private RecyclerView mRecyclerView;
-    private MyRecyclerAdpter adpter;
+    public static MyRecyclerAdpter adpter;
     private SwipeRefreshLayout swipeRefreshLayout;
     private List<weatherEntry> mWeatherEntryList = new ArrayList<>();
-
     private weatherEntryDao mWeatherDao;
+
+
+    /////
+
+
+    private int[] TollBarTitle = {R.string.unit,R.string.app_name,R.string.cityName};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViews();
+
+
+        toolbar.setTitle(TollBarTitle[1]);//設置ToolBar Title
+        setUpToolBar();//使用父類別的setUpToolBar()，設置ToolBar
+        CurrentMenuItem = 0;//目前Navigation項目位置
+        NV.getMenu().getItem(CurrentMenuItem).setChecked(true);//設置Navigation目前項目被選取狀態
 
 
 
@@ -55,6 +66,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     }
+
+
+
 
     @SuppressLint("ResourceAsColor")
     private void refreshactivity(){
@@ -178,9 +192,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-
-
-
     //解析JSON 資料
     private void parseJSON(String s){
 
@@ -191,11 +202,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 JSONObject TownjsonObject = TownsJsonArray.getJSONObject(j);
 
-                String cityid = TownjsonObject.getString("County");
-                String value = TownjsonObject.getString("AQI");
-                String locationName = TownjsonObject.getString("SiteName");
-                String dataTime = TownjsonObject.getString("PublishTime");
-                String cityPics = TownjsonObject.getString("County");
+                String cityid = TownjsonObject.getString("County");//城市名字
+                String value = TownjsonObject.getString("AQI");//AQI值
+                String locationName = TownjsonObject.getString("SiteName");//鄉鎮名稱
+                String dataTime = TownjsonObject.getString("PublishTime");//更新時間
+                String cityPics = TownjsonObject.getString("County"); //城市名字多存了一欄
 
 
 
@@ -224,12 +235,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mWeatherDao.insertOrReplace(entry);
 
 //        mWeatherEntryList.add(entry);
-//        mWeatherEntryList = mWeatherDao.loadAll();
-//        runOnUiThread(new Runnable() {
-//            @Override
-//            public void run() {
-//                adpter.setList(mWeatherEntryList);
-//            }});
+        mWeatherEntryList = mWeatherDao.loadAll();
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                adpter.setList(mWeatherEntryList);
+            }});
 
 
 
