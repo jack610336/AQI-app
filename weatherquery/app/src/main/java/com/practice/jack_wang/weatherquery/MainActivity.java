@@ -127,7 +127,7 @@ public class MainActivity extends Navigation_BaseActivity implements View.OnClic
             mWeatherDao = dBtools.getCityDao();
 
             mWeatherEntryList = mWeatherDao.loadAll();
-            adpter.setList(mWeatherEntryList);
+            adpter.setList(queryDBData());
             return null;
         }
     }
@@ -231,14 +231,13 @@ public class MainActivity extends Navigation_BaseActivity implements View.OnClic
         mWeatherDao.insertOrReplace(entry);
 
 //        mWeatherEntryList.add(entry);
-        mWeatherEntryList = mWeatherDao.loadAll();
+//        queryDBData();
+//        mWeatherEntryList = mWeatherDao.loadAll();
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                adpter.setList(mWeatherEntryList);
+                adpter.setList(queryDBData());
             }});
-
-
 
     }
 

@@ -11,7 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
+
 
 import com.practice.jack_wang.weatherquery.DBtools.DBtools;
 import com.practice.jack_wang.weatherquery.sqlite.weatherEntry;
@@ -27,25 +27,28 @@ import java.util.List;
 public class Navigation_BaseActivity extends AppCompatActivity {
     private DrawerLayout DL;
     private FrameLayout FL;
-    private LinearLayout background;
+
     protected NavigationView NV;
     protected Toolbar toolbar;
     protected int CurrentMenuItem = 0;//紀錄目前User位於哪一個項目
-    int citycode =0;
+    protected int citycode =0;
 
     weatherEntryDao mWeatherDao;
     private List<weatherEntry> mWeatherEntryList = new ArrayList<>();
-    private List<weatherEntry> mWeatherEntryTaipei = new ArrayList<>();
 
     @Override
     public void setContentView(@LayoutRes int layoutResID) {
-        DL = (DrawerLayout) getLayoutInflater().inflate(R.layout.navigation_drawer, null);
-        FL = (FrameLayout) DL.findViewById(R.id.content_frame);
-        NV = (NavigationView)DL.findViewById(R.id.Left_Navigation);
-        getLayoutInflater().inflate(layoutResID, FL, true);
-        super.setContentView(DL);
-        toolbar = (Toolbar) findViewById(R.id.ToolBar);
-        setUpNavigation();
+
+
+            DL = (DrawerLayout) getLayoutInflater().inflate(R.layout.navigation_drawer, null);
+            FL = (FrameLayout) DL.findViewById(R.id.content_frame);
+            NV = (NavigationView)DL.findViewById(R.id.Left_Navigation);
+            getLayoutInflater().inflate(layoutResID, FL, true);
+            super.setContentView(DL);
+            toolbar = findViewById(R.id.ToolBar);
+            setUpNavigation();
+
+
     }
     private void setUpNavigation() {
         // Set navigation item selected listener
@@ -230,6 +233,134 @@ public class Navigation_BaseActivity extends AppCompatActivity {
 
 
 
+    protected List<weatherEntry> queryDBData(){
+
+        DBtools dBtools = DBtools.Instance(Navigation_BaseActivity.this);
+        mWeatherDao = dBtools.getCityDao();
+
+        switch (citycode){
+
+            case 0:
+                mWeatherEntryList= mWeatherDao.loadAll();
+                break;
+            case 1:
+                mWeatherEntryList= mWeatherDao.queryBuilder()
+                        .where(weatherEntryDao.Properties.CityPics.eq("基隆市"))
+                        .list();
+                break;
+            case 2:
+                mWeatherEntryList= mWeatherDao.queryBuilder()
+                        .where(weatherEntryDao.Properties.CityPics.eq("新北市"))
+                        .list();
+                break;
+            case 3:
+                mWeatherEntryList= mWeatherDao.queryBuilder()
+                        .where(weatherEntryDao.Properties.CityPics.eq("臺北市"))
+                        .list();
+                break;
+            case 4:
+                mWeatherEntryList= mWeatherDao.queryBuilder()
+                        .where(weatherEntryDao.Properties.CityPics.eq("桃園市"))
+                        .list();
+                break;
+            case 5:
+                mWeatherEntryList= mWeatherDao.queryBuilder()
+                        .where(weatherEntryDao.Properties.CityPics.eq("新竹縣"))
+                        .list();
+                break;
+            case 6:
+                mWeatherEntryList= mWeatherDao.queryBuilder()
+                        .where(weatherEntryDao.Properties.CityPics.eq("新竹市"))
+                        .list();
+                break;
+            case 7:
+                mWeatherEntryList= mWeatherDao.queryBuilder()
+                        .where(weatherEntryDao.Properties.CityPics.eq("苗栗縣"))
+                        .list();
+                break;
+            case 8:
+                mWeatherEntryList= mWeatherDao.queryBuilder()
+                        .where(weatherEntryDao.Properties.CityPics.eq("臺中市"))
+                        .list();
+                break;
+            case 9:
+                mWeatherEntryList= mWeatherDao.queryBuilder()
+                        .where(weatherEntryDao.Properties.CityPics.eq("彰化縣"))
+                        .list();
+                break;
+            case 10:
+                mWeatherEntryList= mWeatherDao.queryBuilder()
+                        .where(weatherEntryDao.Properties.CityPics.eq("南投縣"))
+                        .list();
+                break;
+            case 11:
+                mWeatherEntryList= mWeatherDao.queryBuilder()
+                        .where(weatherEntryDao.Properties.CityPics.eq("雲林縣"))
+                        .list();
+                break;
+            case 12:
+                mWeatherEntryList= mWeatherDao.queryBuilder()
+                        .where(weatherEntryDao.Properties.CityPics.eq("嘉義市"))
+                        .list();
+                break;
+            case 13:
+                mWeatherEntryList= mWeatherDao.queryBuilder()
+                        .where(weatherEntryDao.Properties.CityPics.eq("嘉義縣"))
+                        .list();
+                break;
+            case 14:
+                mWeatherEntryList= mWeatherDao.queryBuilder()
+                        .where(weatherEntryDao.Properties.CityPics.eq("臺南市"))
+                        .list();
+                break;
+            case 15:
+                mWeatherEntryList= mWeatherDao.queryBuilder()
+                        .where(weatherEntryDao.Properties.CityPics.eq("高雄市"))
+                        .list();
+                break;
+            case 16:
+                mWeatherEntryList= mWeatherDao.queryBuilder()
+                        .where(weatherEntryDao.Properties.CityPics.eq("屏東縣"))
+                        .list();
+                break;
+            case 17:
+                mWeatherEntryList= mWeatherDao.queryBuilder()
+                        .where(weatherEntryDao.Properties.CityPics.eq("宜蘭縣"))
+                        .list();
+                break;
+            case 18:
+                mWeatherEntryList= mWeatherDao.queryBuilder()
+                        .where(weatherEntryDao.Properties.CityPics.eq("花蓮縣"))
+                        .list();
+                break;
+            case 19:
+                mWeatherEntryList= mWeatherDao.queryBuilder()
+                        .where(weatherEntryDao.Properties.CityPics.eq("臺東縣"))
+                        .list();
+                break;
+            case 20:
+                mWeatherEntryList= mWeatherDao.queryBuilder()
+                        .where(weatherEntryDao.Properties.CityPics.eq("連江縣"))
+                        .list();
+                break;
+            case 21:
+                mWeatherEntryList= mWeatherDao.queryBuilder()
+                        .where(weatherEntryDao.Properties.CityPics.eq("金門縣"))
+                        .list();
+                break;
+            case 22:
+                mWeatherEntryList= mWeatherDao.queryBuilder()
+                        .where(weatherEntryDao.Properties.CityPics.eq("澎湖縣"))
+                        .list();
+                break;
+
+        }
+
+        return mWeatherEntryList;
+
+    }
+
+
     //非同步方式查詢資料庫
     class queryDB extends AsyncTask<String,Void,String> {
 
@@ -240,131 +371,9 @@ public class Navigation_BaseActivity extends AppCompatActivity {
             mWeatherDao = dBtools.getCityDao();
             mWeatherEntryList = mWeatherDao.loadAll();
 
+            queryDBData();//查詢資料庫並顯示各個縣市AQI值
 
-            switch (citycode){
-
-                case 0:
-                    mWeatherEntryList= mWeatherDao.loadAll();
-                    break;
-                case 1:
-                    mWeatherEntryList= mWeatherDao.queryBuilder()
-                            .where(weatherEntryDao.Properties.CityPics.eq("基隆市"))
-                            .list();
-                    break;
-                case 2:
-                    mWeatherEntryList= mWeatherDao.queryBuilder()
-                            .where(weatherEntryDao.Properties.CityPics.eq("新北市"))
-                            .list();
-                    break;
-                case 3:
-                    mWeatherEntryList= mWeatherDao.queryBuilder()
-                            .where(weatherEntryDao.Properties.CityPics.eq("臺北市"))
-                            .list();
-                    break;
-                case 4:
-                    mWeatherEntryList= mWeatherDao.queryBuilder()
-                            .where(weatherEntryDao.Properties.CityPics.eq("桃園市"))
-                            .list();
-                    break;
-                case 5:
-                    mWeatherEntryList= mWeatherDao.queryBuilder()
-                            .where(weatherEntryDao.Properties.CityPics.eq("新竹縣"))
-                            .list();
-                    break;
-                case 6:
-                    mWeatherEntryList= mWeatherDao.queryBuilder()
-                            .where(weatherEntryDao.Properties.CityPics.eq("新竹市"))
-                            .list();
-                    break;
-                case 7:
-                    mWeatherEntryList= mWeatherDao.queryBuilder()
-                            .where(weatherEntryDao.Properties.CityPics.eq("苗栗縣"))
-                            .list();
-                    break;
-                case 8:
-                    mWeatherEntryList= mWeatherDao.queryBuilder()
-                            .where(weatherEntryDao.Properties.CityPics.eq("臺中市"))
-                            .list();
-                    break;
-                case 9:
-                    mWeatherEntryList= mWeatherDao.queryBuilder()
-                            .where(weatherEntryDao.Properties.CityPics.eq("彰化縣"))
-                            .list();
-                    break;
-                case 10:
-                    mWeatherEntryList= mWeatherDao.queryBuilder()
-                            .where(weatherEntryDao.Properties.CityPics.eq("南投縣"))
-                            .list();
-                    break;
-                case 11:
-                    mWeatherEntryList= mWeatherDao.queryBuilder()
-                            .where(weatherEntryDao.Properties.CityPics.eq("雲林縣"))
-                            .list();
-                    break;
-                case 12:
-                    mWeatherEntryList= mWeatherDao.queryBuilder()
-                            .where(weatherEntryDao.Properties.CityPics.eq("嘉義市"))
-                            .list();
-                    break;
-                case 13:
-                    mWeatherEntryList= mWeatherDao.queryBuilder()
-                            .where(weatherEntryDao.Properties.CityPics.eq("嘉義縣"))
-                            .list();
-                    break;
-                case 14:
-                    mWeatherEntryList= mWeatherDao.queryBuilder()
-                            .where(weatherEntryDao.Properties.CityPics.eq("臺南市"))
-                            .list();
-                    break;
-                case 15:
-                    mWeatherEntryList= mWeatherDao.queryBuilder()
-                            .where(weatherEntryDao.Properties.CityPics.eq("高雄市"))
-                            .list();
-                    break;
-                case 16:
-                    mWeatherEntryList= mWeatherDao.queryBuilder()
-                            .where(weatherEntryDao.Properties.CityPics.eq("屏東縣"))
-                            .list();
-                    break;
-                case 17:
-                    mWeatherEntryList= mWeatherDao.queryBuilder()
-                            .where(weatherEntryDao.Properties.CityPics.eq("宜蘭縣"))
-                            .list();
-                    break;
-                case 18:
-                    mWeatherEntryList= mWeatherDao.queryBuilder()
-                            .where(weatherEntryDao.Properties.CityPics.eq("花蓮縣"))
-                            .list();
-                    break;
-                case 19:
-                    mWeatherEntryList= mWeatherDao.queryBuilder()
-                            .where(weatherEntryDao.Properties.CityPics.eq("臺東縣"))
-                            .list();
-                    break;
-                case 20:
-                    mWeatherEntryList= mWeatherDao.queryBuilder()
-                            .where(weatherEntryDao.Properties.CityPics.eq("連江縣"))
-                            .list();
-                    break;
-                case 21:
-                    mWeatherEntryList= mWeatherDao.queryBuilder()
-                            .where(weatherEntryDao.Properties.CityPics.eq("金門縣"))
-                            .list();
-                    break;
-                case 22:
-                    mWeatherEntryList= mWeatherDao.queryBuilder()
-                            .where(weatherEntryDao.Properties.CityPics.eq("澎湖縣"))
-                            .list();
-                    break;
-
-            }
-
-
-
-
-
-
-            MainActivity.adpter.setList(mWeatherEntryList);
+            MainActivity.adpter.setList(queryDBData());
 
 
             return null;

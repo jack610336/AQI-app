@@ -2,6 +2,7 @@ package com.practice.jack_wang.weatherquery.adapter;
 
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -93,7 +94,12 @@ public class MyRecyclerAdpter extends RecyclerView.Adapter<MyRecyclerAdpter.View
     public void setList(List<weatherEntry> list){
 
         this.mweatherEntryList = list;
-        notifyDataSetChanged();
+        try {
+            notifyDataSetChanged();
+        }catch (Exception e){
+            Log.e("ERROR",e.toString());
+        }
+
 
     }
 
