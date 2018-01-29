@@ -1,4 +1,4 @@
-package com.practice.jack_wang.weatherquery;
+package com.jack.aqi_query;
 
 import android.annotation.SuppressLint;
 import android.os.AsyncTask;
@@ -8,11 +8,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
-import com.practice.jack_wang.weatherquery.DBtools.DBtools;
-import com.practice.jack_wang.weatherquery.adapter.MyRecyclerAdpter;
-import com.practice.jack_wang.weatherquery.sqlite.weatherEntry;
-import com.practice.jack_wang.weatherquery.sqlite.weatherEntryDao;
+import com.jack.aqi_query.DBtools.DBtools;
+import com.jack.aqi_query.adapter.MyRecyclerAdpter;
+import com.jack.aqi_query.sqlite.weatherEntry;
+import com.jack.aqi_query.sqlite.weatherEntryDao;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,6 +41,7 @@ public class MainActivity extends Navigation_BaseActivity implements View.OnClic
     private weatherEntryDao mWeatherDao;
 
     private int[] TollBarTitle = {R.string.app_name};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,8 +97,8 @@ public class MainActivity extends Navigation_BaseActivity implements View.OnClic
 
     private void findViews(){
 
-        swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swipe_refresh);
-        mRecyclerView = (RecyclerView)findViewById(R.id.recyclerView);
+        swipeRefreshLayout = findViewById(R.id.swipe_refresh);
+        mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         adpter = new MyRecyclerAdpter(mWeatherEntryList);
         adpter.setRecyclerViewItemClick(new MyRecyclerAdpter.RecyclerViewItemClick() {
@@ -126,8 +128,13 @@ public class MainActivity extends Navigation_BaseActivity implements View.OnClic
             DBtools dBtools = DBtools.Instance(MainActivity.this);
             mWeatherDao = dBtools.getCityDao();
 
+
             mWeatherEntryList = mWeatherDao.loadAll();
-            adpter.setList(queryDBData());
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    adpter.setList(queryDBData());
+                }});
             return null;
         }
     }
@@ -135,6 +142,7 @@ public class MainActivity extends Navigation_BaseActivity implements View.OnClic
 
     //上網抓取資料
     class API_Task extends AsyncTask<String,Void,String>{
+        Toast toast = Toast.makeText(MainActivity.this,getString(R.string.noNetworkInfo), Toast.LENGTH_LONG);
 
         @Override
         protected String doInBackground(String... strings) {
@@ -146,12 +154,10 @@ public class MainActivity extends Navigation_BaseActivity implements View.OnClic
                     }catch (InterruptedException e){
                         e.printStackTrace();
                     }
-
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             Request request = new Request.Builder()
-//                                    .url("http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=1f1aaba5-616a-4a33-867d-878142cac5c4")
                                     .url("http://opendata2.epa.gov.tw/AQI.json")
                                     .build();
 
@@ -167,7 +173,7 @@ public class MainActivity extends Navigation_BaseActivity implements View.OnClic
                                 @Override
                                 public void onFailure(Call call, IOException e) {
                                     //告知使用者連線失敗
-                                    Log.e( " FAILLLLL"+String.valueOf(call),  "FFFFFF "+String.valueOf(e));
+                                    toast.show();
                                 }
                             });
                         }
@@ -206,9 +212,10 @@ public class MainActivity extends Navigation_BaseActivity implements View.OnClic
 
 
 
-                if(value.length() ==0){
+                if(value.length() == 0){
                     value = "-1";
                 }
+
                 doInsertOrEdit(Long.valueOf(j),cityid,locationName,value,dataTime,cityPics);
 
             }
@@ -220,25 +227,22 @@ public class MainActivity extends Navigation_BaseActivity implements View.OnClic
 
     // 控制新增或修改
 
-    private void doInsertOrEdit(Long Id,String cityid,String cityname,String cityvalue,String date,String cityPics){
+    private void doInsertOrEdit(Long Id,String cityName,String aqiValue,String townName,String date,String cityPics){
         weatherEntry entry = new weatherEntry();
-        entry.setId(Id);
-        entry.setCityId(cityid);
-        entry.setCityName(cityname);
-        entry.setCityValue(cityvalue);
-        entry.setDate(date);
-        entry.setCityPics(cityPics);
+        entry.setId(Id);//_id
+        entry.setCityId(cityName);//城市名字
+        entry.setCityName(aqiValue);//AQI值
+        entry.setCityValue(townName);//鄉鎮名稱
+        entry.setDate(date);//更新時間
+        entry.setCityPics(cityPics);//城市名字多存了一欄
         mWeatherDao.insertOrReplace(entry);
 
-//        mWeatherEntryList.add(entry);
-//        queryDBData();
-//        mWeatherEntryList = mWeatherDao.loadAll();
+
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 adpter.setList(queryDBData());
             }});
-
     }
 
 

@@ -1,4 +1,4 @@
-package com.practice.jack_wang.weatherquery;
+package com.jack.aqi_query;
 
 import android.os.AsyncTask;
 import android.support.annotation.LayoutRes;
@@ -13,9 +13,9 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 
-import com.practice.jack_wang.weatherquery.DBtools.DBtools;
-import com.practice.jack_wang.weatherquery.sqlite.weatherEntry;
-import com.practice.jack_wang.weatherquery.sqlite.weatherEntryDao;
+import com.jack.aqi_query.DBtools.DBtools;
+import com.jack.aqi_query.sqlite.weatherEntry;
+import com.jack.aqi_query.sqlite.weatherEntryDao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -141,14 +141,14 @@ public class Navigation_BaseActivity extends AppCompatActivity {
                             NV.getMenu().getItem(CurrentMenuItem).setChecked(true);
                             DL.closeDrawer(GravityCompat.START);
                             break;
-                        case R.id.tChiayi:
+                        case R.id.tChiayiB:
                             citycode=12;
                             new queryDB().execute();
                             CurrentMenuItem = 12;//目前Navigation項目位置
                             NV.getMenu().getItem(CurrentMenuItem).setChecked(true);
                             DL.closeDrawer(GravityCompat.START);
                             break;
-                        case R.id.tChiayiB:
+                        case R.id.tChiayi:
                             citycode=13;
                             new queryDB().execute();
                             CurrentMenuItem = 13;//目前Navigation項目位置
@@ -227,6 +227,7 @@ public class Navigation_BaseActivity extends AppCompatActivity {
                 }
                 return false;
             }
+
         });
 
     }
@@ -300,12 +301,12 @@ public class Navigation_BaseActivity extends AppCompatActivity {
                 break;
             case 12:
                 mWeatherEntryList= mWeatherDao.queryBuilder()
-                        .where(weatherEntryDao.Properties.CityPics.eq("嘉義市"))
+                        .where(weatherEntryDao.Properties.CityPics.eq("嘉義縣"))
                         .list();
                 break;
             case 13:
                 mWeatherEntryList= mWeatherDao.queryBuilder()
-                        .where(weatherEntryDao.Properties.CityPics.eq("嘉義縣"))
+                        .where(weatherEntryDao.Properties.CityPics.eq("嘉義市"))
                         .list();
                 break;
             case 14:
@@ -373,9 +374,11 @@ public class Navigation_BaseActivity extends AppCompatActivity {
 
             queryDBData();//查詢資料庫並顯示各個縣市AQI值
 
-            MainActivity.adpter.setList(queryDBData());
-
-
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    MainActivity.adpter.setList(queryDBData());
+                }});
             return null;
         }
     }

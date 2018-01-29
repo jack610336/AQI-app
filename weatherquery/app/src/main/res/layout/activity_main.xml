@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.practice.jack_wang.weatherquery.MainActivity"
+    tools:context="com.practice.jack_wang.weatherquery.com.jack_wang.weatherquery.MainActivity"
     android:background="#ECFFFF">
 
 

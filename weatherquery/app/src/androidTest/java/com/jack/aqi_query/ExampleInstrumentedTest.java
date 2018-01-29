@@ -1,4 +1,4 @@
-package com.practice.jack_wang.weatherquery;
+package com.jack.aqi_query;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.practice.jack_wang.weatherquery", appContext.getPackageName());
+        assertEquals("com.practice.jack.weatherquery", appContext.getPackageName());
     }
 }

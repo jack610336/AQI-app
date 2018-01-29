@@ -1,10 +1,10 @@
-package com.practice.jack_wang.weatherquery.DBtools;
+package com.jack.aqi_query.DBtools;
 
 import android.content.Context;
 
-import com.practice.jack_wang.weatherquery.sqlite.DaoMaster;
-import com.practice.jack_wang.weatherquery.sqlite.DaoSession;
-import com.practice.jack_wang.weatherquery.sqlite.weatherEntryDao;
+import com.jack.aqi_query.sqlite.DaoMaster;
+import com.jack.aqi_query.sqlite.DaoSession;
+import com.jack.aqi_query.sqlite.weatherEntryDao;
 
 /**
  * Created by Jack_Wang on 2017/12/14.

@@ -1,4 +1,4 @@
-package com.practice.jack_wang.weatherquery;
+package com.jack.aqi_query;
 
 import org.junit.Test;
 

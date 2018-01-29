@@ -1,4 +1,4 @@
-package com.practice.jack_wang.weatherquery.adapter;
+package com.jack.aqi_query.adapter;
 
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.practice.jack_wang.weatherquery.R;
-import com.practice.jack_wang.weatherquery.sqlite.weatherEntry;
+import com.jack.aqi_query.sqlite.weatherEntry;
+import com.jack.aqi_query.R;
 
 
 import java.util.List;
@@ -48,11 +48,10 @@ public class MyRecyclerAdpter extends RecyclerView.Adapter<MyRecyclerAdpter.View
 
 
 
-        int currentAQI=Integer.parseInt(mweatherEntryList.get(position).getCityValue());
+        int currentAQI = Integer.parseInt(mweatherEntryList.get(position).getCityValue());
         holder.itemView.setTag(position);
 
         holder.txtcityName.setText(mweatherEntryList.get(position).getCityName());
-//        holder.emptytxt.setText(mweatherEntryList.get(position).getDate());
 
         if(currentAQI ==-1) {
             holder.txtTemp.setText("AQI : 暫無資料");

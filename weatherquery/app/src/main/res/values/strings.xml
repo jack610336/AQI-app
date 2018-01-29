@@ -1,48 +1,47 @@
 <resources>
-    <string name="app_name" translatable="false">AQI</string>
-    <string name="unit" translatable="false">°C</string>
-    <string name="cityName" translatable="false">北投區</string>
+    <string name="app_name">Taiwan Air Quality Index</string>
+    <string name="unit">°C</string>
+    <string name="cityName">Beitou</string>
 
-    <string name="good" translatable="false"> 良好</string>
-    <string name="normal" translatable="false"> 普通</string>
-    <string name="notgood1" translatable="false"> 小心</string>
-    <string name="nothealth" translatable="false"> 不健康</string>
-    <string name="nogood" translatable="false"> 非常不健康</string>
-    <string name="dangerous" translatable="false"> 危害</string>
-    <string name="error" translatable="false"> 資料有誤</string>
+    <string name="good"> Good</string>
+    <string name="normal"> Moderate</string>
+    <string name="notgood1" > Warning</string>
+    <string name="nothealth"> Unhealthy</string>
+    <string name="nogood"> Very Unhealthy</string>
+    <string name="dangerous"> Hazardous</string>
+    <string name="error"> data incorrect</string>
 
 
     <string name="open_navigation">Open Navigation</string>
     <string name="close_navigation">Close Navigation</string>
 
 
-    <string name="tAll">全台資料</string>
-    <string name="tKeelung">基隆市</string>
-    <string name="tNewTaipei">新北市</string>
-    <string name="tTaipei">臺北市</string>
-    <string name="tTaoyuan">桃園市</string>
-    <string name="tHsinchuB">新竹縣</string>
-    <string name="tHsinchu">新竹市</string>
-    <string name="tMiaoliB">苗栗縣</string>
-    <string name="tTaichung">臺中市</string>
-    <string name="tChanghuaB">彰化縣</string>
-    <string name="tNantouB">南投縣</string>
-    <string name="tYunlinB">雲林縣</string>
-    <string name="tKaohsiung">高雄市</string>
-    <string name="tPingtungB">屏東縣</string>
-    <string name="tHualienB">花蓮縣</string>
-    <string name="tYilan">宜蘭縣</string>
-    <string name="tChiayiB">嘉義縣</string>
-    <string name="tChiayi">嘉義市</string>
-    <string name="tTainan">台南市</string>
-    <string name="tTaitung">臺東縣</string>
-    <string name="tPenghuB">澎湖縣</string>
-    <string name="tLienchiangB">連江縣</string>
-    <string name="tKinmen">金門縣</string>
+    <string name="tAll">Taiwan</string>
+    <string name="tKeelung">Keelung City</string>
+    <string name="tNewTaipei">New Taipei City</string>
+    <string name="tTaipei">Taipei City</string>
+    <string name="tTaoyuan">Taoyuan City</string>
+    <string name="tHsinchuB">Hsinchu</string>
+    <string name="tHsinchu">Hsinchu City</string>
+    <string name="tMiaoliB">Miaoli</string>
+    <string name="tTaichung">Taichung City</string>
+    <string name="tChanghuaB">Changhua</string>
+    <string name="tNantouB">Nantou</string>
+    <string name="tYunlinB">Yunlin</string>
+    <string name="tKaohsiung">Kaohsiung City</string>
+    <string name="tPingtungB">Pingtung</string>
+    <string name="tHualienB">Hualien</string>
+    <string name="tYilan">Yilan</string>
+    <string name="tChiayiB">Chiayi</string>
+    <string name="tChiayi">Chiayi City</string>
+    <string name="tTainan">Tainan City</string>
+    <string name="tTaitung">Taitung</string>
+    <string name="tPenghuB">Penghu</string>
+    <string name="tLienchiangB">Lienchiang</string>
+    <string name="tKinmen">Kinmen</string>
 
     <string name="info">台灣空氣品質查詢</string>
 
-
-
+    <string name="noNetworkInfo">Network does not work \n Please try again later</string>
 
 </resources>

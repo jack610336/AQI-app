@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.practice.jack_wang.weatherquery">
+    package="com.jack.aqi_query">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -11,7 +11,7 @@
         android:roundIcon="@drawable/icons34"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.jack.aqi_query.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
