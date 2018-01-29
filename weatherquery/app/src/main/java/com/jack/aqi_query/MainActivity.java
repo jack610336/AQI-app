@@ -14,6 +14,7 @@ import com.jack.aqi_query.DBtools.DBtools;
 import com.jack.aqi_query.adapter.MyRecyclerAdpter;
 import com.jack.aqi_query.sqlite.weatherEntry;
 import com.jack.aqi_query.sqlite.weatherEntryDao;
+import com.practice.jack_wang.weatherquery.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;

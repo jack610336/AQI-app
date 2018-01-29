@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.jack.aqi_query.sqlite.weatherEntry;
-import com.jack.aqi_query.R;
+import com.practice.jack_wang.weatherquery.R;
 
 
 import java.util.List;

@@ -16,6 +16,7 @@ import android.widget.FrameLayout;
 import com.jack.aqi_query.DBtools.DBtools;
 import com.jack.aqi_query.sqlite.weatherEntry;
 import com.jack.aqi_query.sqlite.weatherEntryDao;
+import com.practice.jack_wang.weatherquery.R;
 
 import java.util.ArrayList;
 import java.util.List;
