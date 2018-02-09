@@ -1,4 +1,4 @@
-# Taiwan-AQI-app
+# AQI app
 
 AQI App for taiwan use okhttp and greendao
 
