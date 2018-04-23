@@ -50,19 +50,16 @@ public class MainActivity extends Navigation_BaseActivity implements View.OnClic
         setContentView(R.layout.activity_main);
         findViews();
 
-
         toolbar.setTitle(TollBarTitle[0]);//設置ToolBar Title
         setUpToolBar();//使用父類別的setUpToolBar()，設置ToolBar
         CurrentMenuItem = 0;//目前Navigation項目位置
         NV.getMenu().getItem(CurrentMenuItem).setChecked(true);//設置Navigation目前項目被選取狀態
 
-
+        Log.e("TTTTTTTTTT", "onCreate: " +  getApplication().getResources().getConfiguration().locale.getLanguage());
 
         searchWeatherAPIs();
         queryDBdata();
         refreshactivity();
-
-
 
     }
 
@@ -212,7 +209,6 @@ public class MainActivity extends Navigation_BaseActivity implements View.OnClic
                 String cityPics = TownjsonObject.getString("County"); //城市名字多存了一欄
 
 
-
                 if(value.length() == 0){
                     value = "-1";
                 }
@@ -228,12 +224,12 @@ public class MainActivity extends Navigation_BaseActivity implements View.OnClic
 
     // 控制新增或修改
 
-    private void doInsertOrEdit(Long Id,String cityName,String aqiValue,String townName,String date,String cityPics){
+    private void doInsertOrEdit(Long Id,String cityName,String townName,String aqiValue,String date,String cityPics){
         weatherEntry entry = new weatherEntry();
         entry.setId(Id);//_id
         entry.setCityId(cityName);//城市名字
-        entry.setCityName(aqiValue);//AQI值
-        entry.setCityValue(townName);//鄉鎮名稱
+        entry.setCityName(townName);//鄉鎮名稱
+        entry.setCityValue(aqiValue);//AQI值
         entry.setDate(date);//更新時間
         entry.setCityPics(cityPics);//城市名字多存了一欄
         mWeatherDao.insertOrReplace(entry);
