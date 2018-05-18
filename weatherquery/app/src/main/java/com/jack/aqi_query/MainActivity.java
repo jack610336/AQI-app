@@ -55,9 +55,7 @@ public class MainActivity extends Navigation_BaseActivity implements View.OnClic
         CurrentMenuItem = 0;//目前Navigation項目位置
         NV.getMenu().getItem(CurrentMenuItem).setChecked(true);//設置Navigation目前項目被選取狀態
 
-        Log.e("TTTTTTTTTT", "onCreate: " +  getApplication().getResources().getConfiguration().locale.getLanguage());
-
-        searchWeatherAPIs();
+        FetchAqi();
         queryDBdata();
         refreshactivity();
 
@@ -86,7 +84,7 @@ public class MainActivity extends Navigation_BaseActivity implements View.OnClic
                     }
                 }).start();
                 swipeRefreshLayout.setRefreshing(false);
-                searchWeatherAPIs();
+                FetchAqi();
                 queryDBdata();
 
             }
@@ -184,8 +182,8 @@ public class MainActivity extends Navigation_BaseActivity implements View.OnClic
 
 
 
-    //抓取天氣資訊
-    private void searchWeatherAPIs(){
+    //抓取AQI資訊
+    private void FetchAqi(){
 
         new API_Task().execute();
 
@@ -213,7 +211,11 @@ public class MainActivity extends Navigation_BaseActivity implements View.OnClic
                     value = "-1";
                 }
 
-                doInsertOrEdit(Long.valueOf(j),cityid,locationName,value,dataTime,cityPics);
+                try {
+                    doInsertOrEdit(Long.valueOf(j), cityid, locationName, value, dataTime, cityPics);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
             }
 

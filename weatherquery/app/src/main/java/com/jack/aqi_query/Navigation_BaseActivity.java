@@ -230,7 +230,6 @@ public class Navigation_BaseActivity extends AppCompatActivity {
             }
 
         });
-
     }
 
 
